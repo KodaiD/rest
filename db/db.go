@@ -10,7 +10,14 @@ var (
 )
 
 func Init() {
-	db, err = gorm.Open("postgres", "host=0.0.0.0 port=5432 user= dbname=gwp password=gwp sslmode=disable")
+	db, err = gorm.Open("postgres", "host=0.0.0.0 port=5432 user=gopher dbname=gopher password=gopher sslmode=disable")
+	if err != nil {
+		panic(err)
+	}
+}
+
+func GetDB() *gorm.DB {
+	return db
 }
 
 func Close() {
