@@ -2,7 +2,10 @@
 
 package db
 
-import "github.com/jinzhu/gorm"
+import (
+	"github.com/KodaiD/rest/entity"
+	"github.com/jinzhu/gorm"
+)
 
 var (
 	db *gorm.DB
@@ -14,6 +17,8 @@ func Init() {
 	if err != nil {
 		panic(err)
 	}
+
+	db.AutoMigrate(&entity.User{}, &entity.Post{})
 }
 
 func GetDB() *gorm.DB {
