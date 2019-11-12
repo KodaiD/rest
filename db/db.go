@@ -4,7 +4,9 @@ package db
 
 import (
 	"github.com/KodaiD/rest/entity"
+
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 var (
@@ -13,7 +15,7 @@ var (
 )
 
 func Init() {
-	db, err = gorm.Open("postgres", "host=0.0.0.0 port=5432 user=gopher dbname=gopher password=gopher sslmode=disable")
+	db, err = gorm.Open("postgres", "port=5432 user=gopher dbname=gopher password=gopher sslmode=disable")
 	if err != nil {
 		panic(err)
 	}
